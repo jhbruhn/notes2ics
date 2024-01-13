@@ -5,10 +5,10 @@ RUN ./platform.sh # should write /.platform and /.compiler
 RUN rustup target add $(cat /.platform)
 RUN apt update && apt-get install -y unzip $(cat /.compiler)
 
-WORKDIR ./ics-adapter
+WORKDIR ./notes2ics
 ADD . ./
 RUN cargo build --release --target $(cat /.platform)
-RUN cp ./target/$(cat /.platform)/release/ics-adapter /ics-adapter.bin # Get rid of this when build --out is stable
+RUN cp ./target/$(cat /.platform)/release/notes2ics /notes2ics.bin # Get rid of this when build --out is stable
 
 
 FROM debian:buster-slim
@@ -27,11 +27,11 @@ RUN groupadd $APP_USER \
     && useradd -g $APP_USER $APP_USER \
     && mkdir -p ${APP}
 
-COPY --from=cross /ics-adapter.bin ${APP}/ics-adapter
+COPY --from=cross /notes2ics.bin ${APP}/notes2ics
 
 RUN chown -R $APP_USER:$APP_USER ${APP}
 
 USER $APP_USER
 WORKDIR ${APP}
 
-CMD ["./ics-adapter"]
+CMD ["./notes2ics"]

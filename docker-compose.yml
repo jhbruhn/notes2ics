@@ -5,6 +5,7 @@ services:
       NOTES_USERNAME: <username>
       NOTES_PASSWORD: <password>
       NOTES_HOST: domino2.something.de
+      TZ: Europe/Berlin
       HOST: 0.0.0.0
       PORT: 3000
     ports:
