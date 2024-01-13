@@ -1,0 +1,12 @@
+services:
+  notes2ics:
+    image: ghcr.io/jbruhn/notes2ics:main
+    environment:
+      NOTES_USERNAME: <username>
+      NOTES_PASSWORD: <password>
+      NOTES_HOST: domino2.something.de
+      HOST: 0.0.0.0
+      PORT: 3000
+    ports:
+      - 3000:3000
+    # http://localhost:3000/calendar/<username>?startDays=-7&endDays=31&filterInvites=true
