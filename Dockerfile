@@ -11,7 +11,7 @@ RUN cargo build --release --target $(cat /.platform)
 RUN cp ./target/$(cat /.platform)/release/notes2ics /notes2ics.bin # Get rid of this when build --out is stable
 
 
-FROM debian:buster-slim
+FROM debian:bookworm-slim
 ARG APP=/usr/src/app
 
 RUN apt-get update \
