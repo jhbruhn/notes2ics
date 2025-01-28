@@ -1,6 +1,6 @@
 services:
   notes2ics:
-    image: ghcr.io/jbruhn/notes2ics:main
+    image: ghcr.io/jhbruhn/notes2ics:main
     environment:
       NOTES_USERNAME: <username>
       NOTES_PASSWORD: <password>
